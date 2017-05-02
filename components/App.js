@@ -16,6 +16,22 @@ export default class App extends React.Component {
     this.fetchTweets = this.fetchTweets.bind(this);
   }
 
+  componentWillMount() {
+    this.fetchTweets()
+  }
+
+  componentDidMount() {
+    this.startInterval()
+  }
+
+  componentDidUpdate() {
+    this.updateChart(this.state.latestTweets.length)
+  }
+
+  componentWillUnmount() {
+    this.cleanUpInterval()
+  }
+
   // TODO: componentWillMount()
 
   // TODO: componentDidMount()
